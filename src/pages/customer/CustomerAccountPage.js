@@ -7,7 +7,7 @@ export class CustomerAccountPage {
     this.accountDataLine = page.locator('div').filter({ hasText: 'Account Number' }).first();
     this.depositButton = page.getByRole('button', { name: 'Deposit' });
     this.transactionsButton = page.getByRole('button', { name: 'Transactions' });
-    this.withdrawlButton =page.getByRole('button', { name: 'Withdraw' });
+    this.withdrawlButton = page.getByRole('button', { name: 'Withdraw' });
     this.amountInputField = page.getByPlaceholder('amount');
     this.depositFormButton = page.getByRole('form').getByRole('button', { name: 'Deposit' });
     this.depositSuccessfulMessage = page.getByText('Deposit Successful');
