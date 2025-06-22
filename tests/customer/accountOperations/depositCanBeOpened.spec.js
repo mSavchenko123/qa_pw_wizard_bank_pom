@@ -1,16 +1,16 @@
-import { test } from "@playwright/test";
-import { faker } from "@faker-js/faker";
-import { CustomerLoginPage } from "../../../src/pages/customer/CustomerLoginPage";
-import { CustomerAccountPage } from "../../../src/pages/customer/CustomerAccountPage";
-import { TransactionsPage } from "../../../src/pages/customer/TransactionsPage";
+import { test } from '@playwright/test';
+import { faker } from '@faker-js/faker';
+import { CustomerLoginPage } from '../../../src/pages/customer/CustomerLoginPage';
+import { CustomerAccountPage } from '../../../src/pages/customer/CustomerAccountPage';
+import { TransactionsPage } from '../../../src/pages/customer/TransactionsPage';
 
-test("Assert the deposit can be opened", async ({ page }) => {
+test('Assert the deposit can be opened', async ({ page }) => {
   const customerLoginPage = new CustomerLoginPage(page);
   const accountPage = new CustomerAccountPage(page);
   const transactionsPage = new TransactionsPage(page);
 
   await customerLoginPage.open();
-  await customerLoginPage.selectCustomer("Harry Potter");
+  await customerLoginPage.selectCustomer('Harry Potter');
   await customerLoginPage.clickLoginButton();
 
   await accountPage.clickDepositButton();
@@ -29,5 +29,5 @@ test("Assert the deposit can be opened", async ({ page }) => {
   await transactionsPage.reload();
 
   await transactionsPage.assertFirstRowAmountContainsText(amount);
-  await transactionsPage.assertFirstRowTypeContainsText("Credit");
+  await transactionsPage.assertFirstRowTypeContainsText('Credit');
 });

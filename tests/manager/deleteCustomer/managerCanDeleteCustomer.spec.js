@@ -1,7 +1,7 @@
-import { test, expect } from "@playwright/test";
-import { faker } from "@faker-js/faker";
-import { AddCustomerPage } from "../../../src/pages/manager/AddCustomerPage";
-import { CustomersListPage } from "../../../src/pages/manager/CustomersListPage";
+import { test, expect } from '@playwright/test';
+import { faker } from '@faker-js/faker';
+import { AddCustomerPage } from '../../../src/pages/manager/AddCustomerPage';
+import { CustomersListPage } from '../../../src/pages/manager/CustomersListPage';
 
 let fullName;
 
@@ -20,12 +20,12 @@ test.beforeEach(async ({ page }) => {
   await addCustomerPage.clickAddCustomerButton();
 });
 
-test("Assert manager can delete customer", async ({ page }) => {
+test('Assert manager can delete customer', async ({ page }) => {
   const customersListPage = new CustomersListPage(page);
   await customersListPage.open();
   await customersListPage.clickDeleteButtonForLastRow();
-  
-  const customerRow = page.locator("tbody tr", { hasText: fullName });
+
+  const customerRow = page.locator('tbody tr', { hasText: fullName });
   await expect(customerRow).toHaveCount(0);
   await page.reload();
   await expect(customerRow).toHaveCount(0);

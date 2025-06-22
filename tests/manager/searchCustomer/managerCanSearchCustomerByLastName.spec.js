@@ -1,7 +1,7 @@
-import { test } from "@playwright/test";
-import { faker } from "@faker-js/faker";
-import { AddCustomerPage } from "../../../src/pages/manager/AddCustomerPage";
-import { CustomersListPage } from "../../../src/pages/manager/CustomersListPage";
+import { test } from '@playwright/test';
+import { faker } from '@faker-js/faker';
+import { AddCustomerPage } from '../../../src/pages/manager/AddCustomerPage';
+import { CustomersListPage } from '../../../src/pages/manager/CustomersListPage';
 
 let firstName;
 let lastName;
@@ -21,13 +21,13 @@ test.beforeEach(async ({ page }) => {
   await addCustomerPage.clickAddCustomerButton();
 });
 
-test("Assert manager can search customer by Last Name", async ({ page }) => {
+test('Assert manager can search customer by Last Name', async ({ page }) => {
   const customersListPage = new CustomersListPage(page);
 
   await customersListPage.open();
   await customersListPage.searchCustomerByLastName(lastName);
   await customersListPage.assertFirstName(firstName);
   await customersListPage.assertLastName(lastName);
-  
+
   await customersListPage.assertOnlyOneCustomerRow();
 });

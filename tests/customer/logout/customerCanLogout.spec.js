@@ -1,9 +1,9 @@
-import { test } from "@playwright/test";
-import { BankHomePage } from "../../../src/pages/BankHomePage";
-import { CustomerLoginPage } from "../../../src/pages/customer/CustomerLoginPage";
-import { CustomerAccountPage } from "../../../src/pages/customer/CustomerAccountPage";
+import { test } from '@playwright/test';
+import { BankHomePage } from '../../../src/pages/BankHomePage';
+import { CustomerLoginPage } from '../../../src/pages/customer/CustomerLoginPage';
+import { CustomerAccountPage } from '../../../src/pages/customer/CustomerAccountPage';
 
-test("Assert correct customer Logout ", async ({ page }) => {
+test('Assert correct customer Logout ', async ({ page }) => {
   const bankHomePage = new BankHomePage(page);
   const customerLoginPage = new CustomerLoginPage(page);
   const accountPage = new CustomerAccountPage(page);
@@ -11,7 +11,7 @@ test("Assert correct customer Logout ", async ({ page }) => {
   await bankHomePage.open();
   await bankHomePage.clickCustomerLoginButton();
 
-  await customerLoginPage.selectCustomer("Neville Longbottom");
+  await customerLoginPage.selectCustomer('Neville Longbottom');
   await customerLoginPage.clickLoginButton();
 
   await accountPage.clickLogoutButton();
@@ -19,5 +19,5 @@ test("Assert correct customer Logout ", async ({ page }) => {
   await customerLoginPage.waitForOpened();
   await customerLoginPage.assertSelectCustomerDropdownIsVisible();
 
-  await customerLoginPage.assertSelectCustomerDropdownContainsValue("");
+  await customerLoginPage.assertSelectCustomerDropdownContainsValue('');
 });

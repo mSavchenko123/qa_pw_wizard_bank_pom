@@ -1,9 +1,9 @@
-import { test, expect } from "@playwright/test";
-import { faker } from "@faker-js/faker";
-import { AddCustomerPage } from "../../../src/pages/manager/AddCustomerPage";
-import { CustomersListPage } from "../../../src/pages/manager/CustomersListPage";
+import { test, expect } from '@playwright/test';
+import { faker } from '@faker-js/faker';
+import { AddCustomerPage } from '../../../src/pages/manager/AddCustomerPage';
+import { CustomersListPage } from '../../../src/pages/manager/CustomersListPage';
 
-test("Assert manager can add new customer", async ({ page }) => {
+test('Assert manager can add new customer', async ({ page }) => {
   const addCustomerPage = new AddCustomerPage(page);
   const customersListPage = new CustomersListPage(page);
 
@@ -16,7 +16,7 @@ test("Assert manager can add new customer", async ({ page }) => {
   await addCustomerPage.fillLastName(lastName);
   await addCustomerPage.fillPostalCode(postCode);
   await addCustomerPage.clickAddCustomerButton();
-  
+
   await page.reload();
   await addCustomerPage.clickCustomersButton();
 
